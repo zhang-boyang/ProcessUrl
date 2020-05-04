@@ -1,0 +1,3 @@
+
+#ignore all macos DS_STORE
+*.DS_Store
