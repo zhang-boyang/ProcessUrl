@@ -56,4 +56,5 @@ e.g. `./main testurl.txt 100 110`
    这里可能会出现mapF结果不均匀的情况，有两种不均匀。一种是因为某个url出现次数本身就很多，不过这个不会影响reduceF对内存的使用，因为出现多少条都只占string+int的大小。还要一种情况就是hash出的不同url在某个号段上比较集中。这种情况我认为是hash算法本身分配不均导致的（即这个hash算法不适合用来做为url的hash）。解决的方法有三种，一个是重新找一个能够更均匀hash的算法。第二就是提升mapF的任务个数。第三就是将比较大的mapF结果每项加盐二次hash，如果还不满足再次加盐（当然，每一次盐都不一样），直到得到reduceF能够处理的大小后结束。
    
 [1]https://juejin.im/post/5d9ff459f265da5b8a5160f5
+
 [2]https://draveness.me/golang/docs/part2-foundation/ch03-datastructure/golang-hashmap/
